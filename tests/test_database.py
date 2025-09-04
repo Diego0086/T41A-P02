@@ -24,7 +24,13 @@ def test_maestros_insertados(db_connection):
         cur.execute("SELECT COUNT(*) FROM maestros;")
         count = cur.fetchone()[0]
         assert count == 10
-
+        
+def test_periodo_insertados(db_connection):
+    with db_connection.cursor() as cur:
+        cur.execute("SELECT COUNT(*) FROM periodo;")
+        count = cur.fetchone()[0]
+        assert count == 10
+        
 def test_grupos_insertados(db_connection):
     with db_connection.cursor() as cur:
         cur.execute("SELECT COUNT(*) FROM grupos;")
@@ -50,7 +56,7 @@ def test_structure(db_connection):
             IN ('alumnos', 'maestros', 'grupos',
             'inscripciones', 'asistencia');
           '''
-    expected_tables = {'alumnos', 'maestros',
+    expected_tables = {'alumnos', 'maestros', 'periodo',
                        'grupos', 'inscripciones',
                        'asistencia'}
     with db_connection.cursor() as cur:
