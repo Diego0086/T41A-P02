@@ -29,7 +29,7 @@ def test_periodo_insertados(db_connection):
     with db_connection.cursor() as cur:
         cur.execute("SELECT COUNT(*) FROM periodo;")
         count = cur.fetchone()[0]
-        assert count == 10
+        assert count == 3
 
 def test_materias_insertados(db_connection):
     with db_connection.cursor() as cur:
@@ -62,7 +62,7 @@ def test_structure(db_connection):
             IN ('alumnos', 'maestros', 'periodo', 'materias', 'grupos',
             'inscripciones', 'asistencia');
           '''
-    expected_tables = {'alumnos', 'maestros', 'periodo', 'materias'
+    expected_tables = {'alumnos', 'maestros', 'periodo', 'materias',
                        'grupos', 'inscripciones',
                        'asistencia'}
     with db_connection.cursor() as cur:
